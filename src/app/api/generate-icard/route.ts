@@ -159,14 +159,24 @@ END:VCARD`;
     // Draw QR code
     ctx.drawImage(qrImage, qrX, qrY, qrSize, qrSize);
 
-    // Add "YOCTOTTA TECHNOLOGIES" vertical text on orange section
+    // Add "YOCTOTTA TECHNOLOGIES" vertical text on orange section with letter spacing
     ctx.save();
     ctx.translate((270 + 40) * scaleFactor, (501 - 10) * scaleFactor); // Move right 40px, up 30px
     ctx.rotate((-90 * Math.PI) / 180);
     ctx.fillStyle = "#9C3D00";
     ctx.font = `400 ${16 * scaleFactor}px Arial`;
     ctx.textAlign = "left";
-    ctx.fillText("YOCTOTTA TECHNOLOGIES", 0, 0);
+
+    // Draw text with letter spacing
+    const text = "YOCTOTTA TECHNOLOGIES";
+    const letterSpacing = 2 * scaleFactor; // Adjust this value for more/less spacing
+    let currentX = 0;
+
+    for (let i = 0; i < text.length; i++) {
+      ctx.fillText(text[i], currentX, 0);
+      currentX += ctx.measureText(text[i]).width + letterSpacing;
+    }
+
     ctx.restore();
 
     // Convert canvas to PNG buffer
