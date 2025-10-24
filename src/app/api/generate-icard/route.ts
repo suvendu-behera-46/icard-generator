@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
     ctx.restore();
 
     // Employee ID label
-    ctx.fillStyle = "#999999";
+    ctx.fillStyle = "#364153";
     ctx.font = `500 ${10 * scaleFactor}px Arial`;
     ctx.fillText(
       `Employee ID - ${employeeId}`,
